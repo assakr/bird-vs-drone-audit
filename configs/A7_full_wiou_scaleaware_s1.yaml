@@ -1,0 +1,7 @@
+# Repeat of A7_full_wiou_scaleaware with seed 1 (multi-seed study, rev. 4). Only the seed and output folder change.
+# The original A7_full_wiou_scaleaware run (no _s suffix) was unseeded and counts as a third independent run.
+_base_: A7_full_wiou_scaleaware.yaml
+
+train:
+  seed: 1
+  save_dir: runs/A7_full_wiou_scaleaware_s1/

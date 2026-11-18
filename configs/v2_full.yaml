@@ -1,0 +1,99 @@
+# ============================================================
+# LCMS-DB v2 Master Configuration: High-Performance Setup
+# Integrates: P2 head (stride 4), CBAM attention, P5 Transformer,
+# WIoU v1 loss, class-balanced sampling, Copy-Paste & Tile-Slice.
+# Dataset: Kaggle Bird vs Drone (20,952 images).
+# ============================================================
+
+_base_: base.yaml
+
+# --- Dataset ---
+data:
+  yaml: data/data_kaggle.yaml
+  num_workers: 2
+
+# --- Input Resolution ---
+resolution: 640
+
+# --- Model modules (v2 enhancements) ---
+model:
+  use_msfe: true                # Multi-Scale Feature Enhancement
+  use_caam: true                # Attention gating enabled
+  attention_type: cbam          # 'cbam' (Channel + Spatial Attention)
+  use_bff: true                 # 4-level Bidirectional Feature Fusion
+  use_p2: true                  # P2 head at stride 4 (160x160) for tiny objects
+  use_transformer: true         # Lightweight Transformer block at P5
+  num_classes: 2                # Bird=0, Drone=1
+  base_channels: 32
+
+# --- Loss weights ---
+loss:
+  box_weight: 7.5
+  cls_weight: 0.5
+  obj_weight: 1.0
+  iou_type: wiou                # Wise-IoU v1 regression loss
+  aux_cls_weight: 0.5           # Auxiliary Bird-Drone confusion penalty
+  cls_alpha: 0.25
+
+# --- Augmentation (v2 additions) ---
+augmentation:
+  horizontal_flip: true
+  random_scale:
+    enabled: true
+    scale_range: [0.5, 1.5]
+  translation:
+    enabled: true
+    translate_frac: 0.1
+  random_crop:
+    enabled: true
+    crop_frac: 0.9
+  brightness_contrast:
+    enabled: true
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+  mosaic:
+    enabled: true
+    prob: 0.5
+  mixup:
+    enabled: true
+    prob: 0.15
+    alpha: 0.2
+  copy_paste:
+    enabled: true
+    prob: 0.3
+    max_paste: 3
+  tile_slice:
+    enabled: true
+    prob: 0.25
+    tile_size: 400
+
+# --- Training ---
+train:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 0.005
+  momentum: 0.937
+  weight_decay: 0.0005
+  warmup_epochs: 2
+  warmup_lr: 0.0005
+  scheduler: cosine
+  amp: true
+  grad_clip: 10.0
+  early_stopping_patience: 25
+  save_dir: runs/v2_full/
+  log_interval: 10
+  class_balanced: true
+  max_train_samples: 3000
+
+# --- Evaluation ---
+eval:
+  conf_threshold: 0.05
+  iou_threshold: 0.45
+  map_iou_start: 0.5
+  map_iou_end: 0.95
+  map_iou_step: 0.05
+  size_thresholds:
+    tiny:   [0,    1024]
+    small:  [1024, 9216]
+    medium: [9216, 65536]
+    large:  [65536, 1.0e9]

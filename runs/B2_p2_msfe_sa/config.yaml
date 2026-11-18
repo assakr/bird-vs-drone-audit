@@ -1,0 +1,103 @@
+augmentation:
+  brightness_contrast:
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+    enabled: true
+  copy_paste:
+    enabled: true
+    max_paste: 3
+    prob: 0.3
+  horizontal_flip: true
+  mixup:
+    alpha: 0.2
+    enabled: true
+    prob: 0.15
+  mosaic:
+    enabled: true
+    prob: 0.5
+  random_crop:
+    crop_frac: 0.9
+    enabled: true
+  random_scale:
+    enabled: true
+    scale_range:
+    - 0.5
+    - 1.5
+  tile_slice:
+    enabled: true
+    prob: 0.25
+    tile_size: 400
+  translation:
+    enabled: true
+    translate_frac: 0.1
+data:
+  num_workers: 2
+  yaml: data/data_clean.yaml
+eval:
+  conf_threshold: 0.05
+  iou_threshold: 0.45
+  map_iou_end: 0.95
+  map_iou_start: 0.5
+  map_iou_step: 0.05
+  size_thresholds:
+    large:
+    - 65536
+    - 1.0e9
+    medium:
+    - 9216
+    - 65536
+    small:
+    - 1024
+    - 9216
+    tiny:
+    - 0
+    - 1024
+loss:
+  assigner: scale_aware
+  aux_cls_weight: 0.5
+  box_weight: 7.5
+  center_radius: 2.5
+  cls_alpha: 0.25
+  cls_weight: 0.5
+  iou_type: ciou
+  level_ranges:
+  - - 0
+    - 64
+  - - 32
+    - 128
+  - - 96
+    - 256
+  - - 192
+    - 100000
+  obj_iou_target: true
+  obj_weight: 1.0
+model:
+  attention_type: cbam
+  base_channels: 32
+  center_decode: linear
+  num_classes: 2
+  use_bff: false
+  use_caam: false
+  use_msfe: true
+  use_p2: true
+  use_transformer: false
+resolution: 640
+train:
+  amp: true
+  batch_size: 8
+  class_balanced: true
+  early_stopping_patience: 25
+  epochs: 50
+  grad_clip: 10.0
+  learning_rate: 0.005
+  log_interval: 10
+  max_train_samples: 3000
+  momentum: 0.937
+  save_dir: runs/B2_p2_msfe_sa/
+  scheduler: cosine
+  seed: 0
+  step_gamma: 0.1
+  step_size: 30
+  warmup_epochs: 2
+  warmup_lr: 0.0005
+  weight_decay: 0.0005

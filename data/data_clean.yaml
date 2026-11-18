@@ -1,0 +1,9 @@
+# Clean split produced by tools/make_clean_split.py (see README_EXPERIMENTS.md)
+train: "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset_clean/train/images"
+val:   "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset_clean/val/images"
+test:  "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset_clean/test/images"
+prefix_classes: true
+nc: 2
+names:
+  0: Bird
+  1: Drone

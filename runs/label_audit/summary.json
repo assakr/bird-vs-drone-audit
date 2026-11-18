@@ -1,0 +1,38 @@
+{
+ "train/Bird": {
+  "ok": 23406,
+  "suspect": 17,
+  "unconfirmed": 287,
+  "possible_missing": 1151
+ },
+ "train/Drone": {
+  "ok": 32606,
+  "suspect": 129,
+  "unconfirmed": 2492,
+  "possible_missing": 775
+ },
+ "valid/Bird": {
+  "ok": 80,
+  "suspect": 496,
+  "unconfirmed": 166,
+  "possible_missing": 512
+ },
+ "valid/Drone": {
+  "ok": 916,
+  "suspect": 1,
+  "unconfirmed": 123,
+  "possible_missing": 1
+ },
+ "test/Bird": {
+  "ok": 366,
+  "suspect": 0,
+  "unconfirmed": 14,
+  "possible_missing": 3
+ },
+ "test/Drone": {
+  "ok": 465,
+  "suspect": 0,
+  "unconfirmed": 61,
+  "possible_missing": 2
+ }
+}

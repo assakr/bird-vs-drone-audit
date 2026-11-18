@@ -1,0 +1,11 @@
+# Rev. 5 assignment decomposition C2_sa_single_cell: A7 with one positive cell per object (multi-positive sampling OFF, scale gating ON).
+# Compare with A6 (original assigner) and A7 (all three parts on) to see which part of the
+# new assignment produces the gain.
+_base_: A7_full_wiou_scaleaware.yaml
+
+loss:
+  center_radius: 0
+
+train:
+  seed: 0
+  save_dir: runs/C2_sa_single_cell/

@@ -1,0 +1,16 @@
+# BirDrone Dataset Configuration
+# Darknet/Roboflow format: images and .txt labels share the same folder.
+# Layout:
+#   train/  — 982  images + labels (*.jpg + *.txt co-located)
+#   valid/  — 2773 images + labels (used for both val and test)
+
+# flat_dir mode: set images_dir = labels_dir (same folder for both)
+train_dir: "D:/PROGRAMMING/dr shimaa/birdrone dataset.v10i.darknet/train"
+val_dir:   "D:/PROGRAMMING/dr shimaa/birdrone dataset.v10i.darknet/valid"
+test_dir:  "D:/PROGRAMMING/dr shimaa/birdrone dataset.v10i.darknet/valid"
+flat: true   # images and labels are in the same directory
+
+nc: 2
+names:
+  0: Bird
+  1: Drone

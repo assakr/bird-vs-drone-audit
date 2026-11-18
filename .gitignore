@@ -1,0 +1,31 @@
+# Model weights (large files, upload to Releases or cloud storage)
+*.pt
+*.pth
+*.onnx
+*.engine
+*.npz
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+
+# Backups
+_backup_before_assigner/

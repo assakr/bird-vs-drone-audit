@@ -1,0 +1,10 @@
+# Ablation Config 3: Baseline + Context-Aware Attention only
+_base_: base.yaml
+
+model:
+  use_msfe: false
+  use_caam: true
+  use_bff: false
+
+train:
+  save_dir: runs/ablation_3_context/

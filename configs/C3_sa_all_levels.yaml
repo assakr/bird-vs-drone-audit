@@ -1,0 +1,11 @@
+# Rev. 5 assignment decomposition C3_sa_all_levels: A7 with every object assigned on every level (scale gating OFF, multi-positive ON).
+# Compare with A6 (original assigner) and A7 (all three parts on) to see which part of the
+# new assignment produces the gain.
+_base_: A7_full_wiou_scaleaware.yaml
+
+loss:
+  level_ranges: [[0, 100000], [0, 100000], [0, 100000], [0, 100000]]
+
+train:
+  seed: 0
+  save_dir: runs/C3_sa_all_levels/

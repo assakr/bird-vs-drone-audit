@@ -1,0 +1,10 @@
+# Ablation Config 4: Full LCMS-DB (all modules enabled)
+_base_: base.yaml
+
+model:
+  use_msfe: true
+  use_caam: true
+  use_bff: true
+
+train:
+  save_dir: runs/ablation_4_full/

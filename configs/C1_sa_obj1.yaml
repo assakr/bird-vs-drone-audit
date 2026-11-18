@@ -1,0 +1,11 @@
+# Rev. 5 assignment decomposition C1_sa_obj1: A7 with objectness target = 1.0 at positives (IoU-aware objectness OFF).
+# Compare with A6 (original assigner) and A7 (all three parts on) to see which part of the
+# new assignment produces the gain.
+_base_: A7_full_wiou_scaleaware.yaml
+
+loss:
+  obj_iou_target: false
+
+train:
+  seed: 0
+  save_dir: runs/C1_sa_obj1/

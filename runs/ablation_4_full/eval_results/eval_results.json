@@ -1,0 +1,91 @@
+{
+  "overall": {
+    "mAP@0.5": 2.8901325585342195e-05,
+    "mAP@0.5:0.95": 2.890132558534219e-05,
+    "Precision": 0.004100227790430934,
+    "Recall": 0.002089136490250211,
+    "F1": 0.00276795302873862
+  },
+  "per_class": {
+    "Bird": {
+      "P": 0.008200455580861868,
+      "R": 0.004178272980500422,
+      "F1": 0.00553590605747724,
+      "AP": 5.780265117068439e-05,
+      "n_gt": 4308
+    },
+    "Drone": {
+      "P": 0.0,
+      "R": 0.0,
+      "F1": 0.0,
+      "AP": 0.0,
+      "n_gt": 2437
+    }
+  },
+  "size_breakdown": {
+    "Tiny": {
+      "Precision": 0.4999999999285714,
+      "Recall": 0.0015177797051164276,
+      "AP@0.5": 0.0015177797048996017
+    },
+    "Small": {
+      "Precision": 0.49999999995454547,
+      "Recall": 0.002808988764043509,
+      "AP@0.5": 0.002808988763788146
+    },
+    "Medium": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "AP@0.5": 0.0
+    },
+    "Large": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "AP@0.5": 0.0
+    }
+  },
+  "robustness": {
+    "bg_complex": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "mAP@0.5": 0.0
+    },
+    "illumination": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "mAP@0.5": 0.0
+    },
+    "motion_blur": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "mAP@0.5": 0.0
+    },
+    "occlusion": {
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "mAP@0.5": 0.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      18,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "speed": {
+    "fps": 192.73,
+    "inference_ms": 5.189,
+    "n_images": 2773
+  },
+  "complexity": {
+    "params_M": 10.841,
+    "flops_G": -1.0,
+    "fps": 94.27,
+    "inference_ms": 10.608,
+    "model_size_mb": 82.99
+  }
+}

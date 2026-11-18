@@ -1,0 +1,7 @@
+# Repeat of A5_full_ciou with seed 1 (multi-seed study, rev. 4). Only the seed and output folder change.
+# The original A5_full_ciou run (no _s suffix) was unseeded and counts as a third independent run.
+_base_: A5_full_ciou.yaml
+
+train:
+  seed: 1
+  save_dir: runs/A5_full_ciou_s1/

@@ -1,0 +1,7 @@
+# Resolution experiment: 1280x1280
+_base_: ablation_4_full.yaml
+
+resolution: 1280
+train:
+  batch_size: 4    # reduced for memory
+  save_dir: runs/res_1280/

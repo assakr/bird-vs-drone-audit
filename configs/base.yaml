@@ -1,0 +1,83 @@
+# ============================================================
+# LCMS-DB Base Configuration
+# All ablation configs inherit from / extend this file.
+# ============================================================
+
+# --- Dataset ---
+data:
+  yaml: data/data.yaml          # path to dataset definition
+  num_workers: 4                # DataLoader workers
+
+# --- Input Resolution ---
+resolution: 640                 # 640 or 1280 — benchmarked in Section 8
+
+# --- Model modules (ablation flags) ---
+model:
+  use_msfe: true                # Multi-Scale Feature Enhancement (Sec 5.2)
+  use_caam: true                # Context-Aware Attention Module (Sec 5.3)
+  use_bff: true                 # Bidirectional Feature Fusion (Sec 5.4)
+  num_classes: 2                # Bird=0, Drone=1
+  base_channels: 32             # backbone width multiplier base
+
+# --- Training ---
+train:
+  epochs: 100
+  batch_size: 16
+  learning_rate: 0.01
+  momentum: 0.937
+  weight_decay: 0.0005
+  warmup_epochs: 3
+  warmup_lr: 0.001
+  scheduler: cosine             # 'cosine' or 'step'
+  step_size: 30                 # used only if scheduler=step
+  step_gamma: 0.1
+  amp: true                     # automatic mixed precision
+  grad_clip: 10.0               # max gradient norm
+  early_stopping_patience: 20   # epochs without val mAP improvement
+  save_dir: runs/               # checkpoint output directory
+  log_interval: 10              # batch log frequency
+
+# --- Loss weights ---
+loss:
+  box_weight: 7.5
+  cls_weight: 0.5
+  obj_weight: 1.0
+  iou_type: ciou                # 'iou', 'giou', 'diou', 'ciou'
+
+# --- Augmentation (train only) ---
+augmentation:
+  horizontal_flip: true
+  random_scale:
+    enabled: true
+    scale_range: [0.5, 1.5]
+  translation:
+    enabled: true
+    translate_frac: 0.1
+  random_crop:
+    enabled: true
+    crop_frac: 0.9
+  brightness_contrast:
+    enabled: true
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+  mosaic:
+    enabled: true
+    prob: 0.5
+  mixup:
+    enabled: true
+    prob: 0.15
+    alpha: 0.2
+
+# --- Evaluation ---
+eval:
+  conf_threshold: 0.25
+  iou_threshold: 0.45           # NMS IoU threshold
+  map_iou_start: 0.5
+  map_iou_end: 0.95
+  map_iou_step: 0.05
+  # COCO size thresholds (area in pixels squared at given resolution)
+  size_thresholds:
+    tiny:   [0,    1024]        # 0 to 32*32
+    small:  [1024, 9216]        # 32*32 to 96*96
+    medium: [9216, 65536]       # 96*96 to 256*256
+    large:  [65536, 1.0e9]      # 256*256 to inf

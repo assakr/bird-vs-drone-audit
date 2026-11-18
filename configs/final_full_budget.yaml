@@ -1,0 +1,24 @@
+# Final LCMS-DB training on the clean split with the FULL training set every epoch,
+# using the rev. 2 target assignment (see A7_full_wiou_scaleaware.yaml).
+# If A7 does not beat A6 on the clean test split, delete the model.center_decode and
+# loss.assigner/... lines below to train the final model with the original assigner.
+_base_: v2_full.yaml
+
+data:
+  yaml: data/data_clean.yaml
+
+model:
+  center_decode: linear
+
+loss:
+  iou_type: wiou
+  assigner: scale_aware
+  center_radius: 2.5
+  level_ranges: [[0, 64], [32, 128], [96, 256], [192, 100000]]
+  obj_iou_target: true
+
+train:
+  epochs: 100
+  max_train_samples: 1000000   # i.e. the whole training set every epoch
+  early_stopping_patience: 25
+  save_dir: runs/final_full_budget/

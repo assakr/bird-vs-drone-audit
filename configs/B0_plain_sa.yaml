@@ -1,0 +1,18 @@
+# Rev. 5 ablation B0_plain_sa: CSP + FPN, P3-P5, CIoU, trained WITH the scale-aware assignment.
+# Same architecture, data, budget and evaluation as A0_plain; only the target assignment,
+# centre decode and seed differ. Chain B0 -> B5 (then A7 = B5 + Wise-IoU) repeats the
+# architecture ablation under a working assigner.
+_base_: A0_plain.yaml
+
+model:
+  center_decode: linear
+
+loss:
+  assigner: scale_aware
+  center_radius: 2.5
+  level_ranges: [[0, 96], [64, 256], [192, 100000]]   # P3, P4, P5 (no P2 level in this model)
+  obj_iou_target: true
+
+train:
+  seed: 0
+  save_dir: runs/B0_plain_sa/

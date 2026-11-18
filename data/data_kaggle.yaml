@@ -1,0 +1,20 @@
+# Bird vs Drone Kaggle Dataset Configuration
+# Location: D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset
+# Layout:
+#   train/ (18,323 images)
+#   valid/ (1,740 images)
+#   test/  (889 images)
+
+train: "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset/train/images"
+val:   "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset/valid/images"
+test:  "D:/PROGRAMMING/dr shimaa/Bird vs Drone kaggel/Dataset/test/images"
+
+# True class labels determined by filename prefix:
+#   B* (BT, BV) -> 0: Bird
+#   D* (DT, DV) -> 1: Drone
+prefix_classes: true
+
+nc: 2
+names:
+  0: Bird
+  1: Drone

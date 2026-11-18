@@ -1,0 +1,28 @@
+# Ablation A7_full_wiou_scaleaware: A6 (= LCMS-DB v2) + scale-aware multi-positive assigner
+# + IoU-aware objectness. Only the target assignment / centre decode change; architecture,
+# data, budget and evaluation are identical to A6 (the original run was not seeded).
+_base_: v2_full.yaml
+
+data:
+  yaml: data/data_clean.yaml
+
+model:
+  attention_type: cbam
+  use_p2: true
+  use_msfe: true
+  use_caam: true
+  use_bff: true
+  use_transformer: true
+  center_decode: linear      # off-centre positive cells must be able to reach the object centre
+
+loss:
+  iou_type: wiou
+  assigner: scale_aware      # 'center' = original single-cell rule
+  center_radius: 2.5         # positives: cells inside the box and within 2.5 strides of its centre
+  level_ranges: [[0, 64], [32, 128], [96, 256], [192, 100000]]   # px on max(w,h): P2, P3, P4, P5
+  obj_iou_target: true       # objectness target at positives = IoU of the predicted box
+
+train:
+  epochs: 50
+  max_train_samples: 3000   # same budget as A0-A6
+  save_dir: runs/A7_full_wiou_scaleaware/

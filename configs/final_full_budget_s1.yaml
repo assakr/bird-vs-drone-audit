@@ -1,0 +1,7 @@
+# Repeat of final_full_budget with seed 1 (multi-seed study, rev. 4). Only the seed and output folder change.
+# The original final_full_budget run (no _s suffix) was unseeded and counts as a third independent run.
+_base_: final_full_budget.yaml
+
+train:
+  seed: 1
+  save_dir: runs/final_full_budget_s1/

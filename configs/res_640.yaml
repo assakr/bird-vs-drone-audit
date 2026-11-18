@@ -1,0 +1,7 @@
+# Resolution experiment: 640x640
+_base_: ablation_4_full.yaml
+
+resolution: 640
+
+train:
+  save_dir: runs/res_640/

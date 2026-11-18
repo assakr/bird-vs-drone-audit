@@ -1,0 +1,63 @@
+{
+ "bins": {
+  "100-inf": {
+   "test_images": 647,
+   "reviewed": 25,
+   "same_scene": 25,
+   "fraction": 1.0,
+   "ci95": [
+    0.8668035060468213,
+    1.0
+   ]
+  },
+  "50-100": {
+   "test_images": 169,
+   "reviewed": 25,
+   "same_scene": 25,
+   "fraction": 1.0,
+   "ci95": [
+    0.8668035060468213,
+    1.0
+   ]
+  },
+  "25-50": {
+   "test_images": 38,
+   "reviewed": 25,
+   "same_scene": 25,
+   "fraction": 1.0,
+   "ci95": [
+    0.8668035060468213,
+    1.0
+   ]
+  },
+  "15-25": {
+   "test_images": 10,
+   "reviewed": 10,
+   "same_scene": 10,
+   "fraction": 1.0,
+   "ci95": [
+    0.7224598312333834,
+    1.0
+   ]
+  },
+  "0-15": {
+   "test_images": 25,
+   "reviewed": 25,
+   "same_scene": 11,
+   "fraction": 0.44,
+   "ci95": [
+    0.2666537494700256,
+    0.6293298298043557
+   ]
+  }
+ },
+ "n_test": 889,
+ "est_same_scene": 875.0,
+ "est_rate": 0.984251968503937,
+ "ci95_rate": [
+  0.8483027403971538,
+  0.9895762044376928
+ ],
+ "inlier_threshold": 15,
+ "clean_test_images": 25
+}

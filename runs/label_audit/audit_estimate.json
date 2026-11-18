@@ -1,0 +1,122 @@
+{
+ "test": {
+  "labelled_images": 886,
+  "est_images_with_bad_labels": 0.0,
+  "est_rate": 0.0,
+  "ci95_rate": [
+   0.0,
+   0.03986420564267848
+  ],
+  "by_status": {
+   "suspect": {
+    "images": 0,
+    "reviewed": 0,
+    "confirmed_bad": 0,
+    "fraction": null,
+    "ci95": null
+   },
+   "unconfirmed": {
+    "images": 74,
+    "reviewed": 50,
+    "confirmed_bad": 0,
+    "fraction": 0.0,
+    "ci95": [
+     0.0,
+     0.07135003417431873
+    ]
+   },
+   "ok": {
+    "images": 812,
+    "reviewed": 100,
+    "confirmed_bad": 0,
+    "fraction": 0.0,
+    "ci95": [
+     0.0,
+     0.03699480747600191
+    ]
+   }
+  }
+ },
+ "train": {
+  "labelled_images": 18306,
+  "est_images_with_bad_labels": 138.0,
+  "est_rate": 0.0075385119632907244,
+  "ci95_rate": [
+   0.0073343409192657165,
+   0.04895936936286916
+  ],
+  "by_status": {
+   "suspect": {
+    "images": 138,
+    "reviewed": 138,
+    "confirmed_bad": 138,
+    "fraction": 1.0,
+    "ci95": [
+     0.9729162671599869,
+     1.0
+    ]
+   },
+   "unconfirmed": {
+    "images": 2507,
+    "reviewed": 50,
+    "confirmed_bad": 0,
+    "fraction": 0.0,
+    "ci95": [
+     0.0,
+     0.07135003417431873
+    ]
+   },
+   "ok": {
+    "images": 15661,
+    "reviewed": 100,
+    "confirmed_bad": 0,
+    "fraction": 0.0,
+    "ci95": [
+     0.0,
+     0.03699480747600191
+    ]
+   }
+  }
+ },
+ "valid": {
+  "labelled_images": 1737,
+  "est_images_with_bad_labels": 743.0,
+  "est_rate": 0.42774899251583187,
+  "ci95_rate": [
+   0.41280982678980194,
+   0.4489193083656568
+  ],
+  "by_status": {
+   "suspect": {
+    "images": 461,
+    "reviewed": 300,
+    "confirmed_bad": 300,
+    "fraction": 1.0,
+    "ci95": [
+     0.9873565700022643,
+     0.9999999999999999
+    ]
+   },
+   "unconfirmed": {
+    "images": 282,
+    "reviewed": 50,
+    "confirmed_bad": 50,
+    "fraction": 1.0,
+    "ci95": [
+     0.9286499658256813,
+     1.0
+    ]
+   },
+   "ok": {
+    "images": 994,
+    "reviewed": 100,
+    "confirmed_bad": 0,
+    "fraction": 0.0,
+    "ci95": [
+     0.0,
+     0.03699480747600191
+    ]
+   }
+  }
+ }
+}

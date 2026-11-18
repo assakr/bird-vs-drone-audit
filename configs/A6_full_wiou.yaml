@@ -1,0 +1,22 @@
+# Ablation A6_full_wiou: + Wise-IoU (= LCMS-DB v2)
+# Cumulative chain A0 -> A6; identical data, budget and evaluation (rev. 1-3 runs were not seeded; see *_s1, *_s2).
+_base_: v2_full.yaml
+
+data:
+  yaml: data/data_clean.yaml
+
+model:
+  attention_type: cbam
+  use_p2: true
+  use_msfe: true
+  use_caam: true
+  use_bff: true
+  use_transformer: true
+
+loss:
+  iou_type: wiou
+
+train:
+  epochs: 50
+  max_train_samples: 3000   # same budget as the reported v2 run; set to 1000000 for full-data training
+  save_dir: runs/A6_full_wiou/

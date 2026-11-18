@@ -1,0 +1,74 @@
+augmentation:
+  brightness_contrast:
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+    enabled: true
+  horizontal_flip: true
+  mixup:
+    alpha: 0.2
+    enabled: true
+    prob: 0.15
+  mosaic:
+    enabled: true
+    prob: 0.5
+  random_crop:
+    crop_frac: 0.9
+    enabled: true
+  random_scale:
+    enabled: true
+    scale_range:
+    - 0.5
+    - 1.5
+  translation:
+    enabled: true
+    translate_frac: 0.1
+data:
+  num_workers: 4
+  yaml: data/data.yaml
+eval:
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  map_iou_end: 0.95
+  map_iou_start: 0.5
+  map_iou_step: 0.05
+  size_thresholds:
+    large:
+    - 65536
+    - 1.0e9
+    medium:
+    - 9216
+    - 65536
+    small:
+    - 1024
+    - 9216
+    tiny:
+    - 0
+    - 1024
+loss:
+  box_weight: 7.5
+  cls_weight: 0.5
+  iou_type: ciou
+  obj_weight: 1.0
+model:
+  base_channels: 32
+  num_classes: 2
+  use_bff: true
+  use_caam: true
+  use_msfe: true
+resolution: 640
+train:
+  amp: true
+  batch_size: 16
+  early_stopping_patience: 20
+  epochs: 50
+  grad_clip: 10.0
+  learning_rate: 0.01
+  log_interval: 10
+  momentum: 0.937
+  save_dir: runs/ablation_4_full/
+  scheduler: cosine
+  step_gamma: 0.1
+  step_size: 30
+  warmup_epochs: 3
+  warmup_lr: 0.001
+  weight_decay: 0.0005
